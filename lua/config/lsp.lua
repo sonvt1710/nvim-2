@@ -13,7 +13,6 @@ vim.lsp.enable({
 	"css_variables",
 	"cssmodules_ls",
 	"dockerls",
-	"grammarly",
 	"jsonls",
 	"lemminx",
 	"marksman",
