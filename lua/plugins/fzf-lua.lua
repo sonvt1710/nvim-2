@@ -1,114 +1,72 @@
-return {
-	"ibhagwan/fzf-lua",
-    enabled = true,
-	dependencies = { "nvim-tree/nvim-web-devicons" },
-	config = function()
-		local fzf = require("fzf-lua")
+local fzf = require("fzf-lua")
 
-		fzf.setup({
-			-- "telescope",
-			-- keymap = {
-			-- 	fzf = {
-			-- 		["ctrl-q"] = "select-all+accept",
-			-- 	},
-			-- },
-			winopts = {
-				height = 0.85,
-				width = 0.80,
-				row = 0.35,
-				col = 0.50,
-				border = "rounded",
-				preview = {
-					border = "border",
-					wrap = "nowrap",
-					hidden = "nohidden",
-					vertical = "down:45%",
-					horizontal = "right:50%",
-					layout = "flex",
-					flip_columns = 120,
-					title = true,
-					scrollbar = "float",
-					delay = 100,
-				},
-			},
-			fzf_opts = {
-				["--layout"] = "reverse",
-				["--info"] = "inline",
-				["--bind"] = "ctrl-j:down,ctrl-k:up",
-			},
-			-- Global actions - applies to all pickers
-			-- actions = {
-			-- 	files = {
-			-- 		["default"] = fzf.actions.file_edit,
-			-- 		["ctrl-s"] = fzf.actions.file_split,
-			-- 		["ctrl-v"] = fzf.actions.file_vsplit,
-			-- 		["ctrl-t"] = fzf.actions.file_tabedit,
-			-- 		["ctrl-q"] = fzf.actions.file_sel_to_qf,
-			-- 		["alt-q"] = fzf.actions.file_sel_to_ll,
-			-- 	},
-			-- },
-			-- files = {
-			-- 	prompt = "Files❯ ",
-			-- 	multiprocess = true,
-			-- 	git_icons = true,
-			-- 	file_icons = true,
-			-- 	color_icons = true,
-			-- 	fd_opts = "--color=never --type f --hidden --follow --exclude .git",
-			-- 	rg_opts = "--color=never --files --hidden --follow -g '!.git'",
-			-- 	cwd_prompt = false,
-			-- },
-			-- grep = {
-			-- 	prompt = "Rg❯ ",
-			-- 	input_prompt = "Grep For❯ ",
-			-- 	multiprocess = true,
-			-- 	git_icons = true,
-			-- 	file_icons = true,
-			-- 	color_icons = true,
-			-- 	rg_opts = "--column --line-number --no-heading --color=always --smart-case --max-columns=4096 -e",
-			-- },
-		})
+fzf.setup({
+  winopts = {
+    height = 0.85,
+    width = 0.80,
+    row = 0.35,
+    col = 0.50,
+    border = "rounded",
+    preview = {
+      border = "border",
+      wrap = "nowrap",
+      hidden = "nohidden",
+      vertical = "down:45%",
+      horizontal = "right:50%",
+      layout = "flex",
+      flip_columns = 120,
+      title = true,
+      scrollbar = "float",
+      delay = 100,
+    },
+  },
+  fzf_opts = {
+    ["--layout"] = "reverse",
+    ["--info"] = "inline",
+    ["--bind"] = "ctrl-j:down,ctrl-k:up",
+  },
+})
 
-		-- -- Keybindings
-		-- local keymap = vim.keymap.set
-		--
-		-- -- Helper function to get git root
-		-- local function get_git_root()
-		-- 	local dot_git_path = vim.fn.finddir(".git", ".;")
-		-- 	if dot_git_path ~= "" then
-		-- 		return vim.fn.fnamemodify(dot_git_path, ":h")
-		-- 	end
-		-- 	return nil
-		-- end
+local map = vim.keymap.set
 
-		-- -- File search from git root or cwd
-		-- keymap("n", "<leader>ff", function()
-		-- 	fzf.files({ cwd = get_git_root() })
-		-- end, { desc = "Find files" })
-		--
-		-- -- Live grep from git root or cwd
-		-- keymap("n", "<leader>ft", function()
-		-- 	fzf.live_grep({ cwd = get_git_root() })
-		-- end, { desc = "Find text" })
-		--
-		-- keymap("n", "<leader>fb", "<cmd>FzfLua buffers<cr>", { desc = "Find buffers" })
-		-- keymap("n", "<leader>fh", "<cmd>FzfLua help_tags<cr>", { desc = "Help tags" })
-		-- keymap("n", "<leader>fr", "<cmd>FzfLua resume<cr>", { desc = "Resume last search" })
-		--
-		-- -- Grep word under cursor from git root
-		-- keymap("n", "<leader>fw", function()
-		-- 	fzf.grep_cword({ cwd = get_git_root() })
-		-- end, { desc = "Grep word under cursor" })
-		--
-		-- -- Additional useful mappings
-		-- keymap("n", "<leader>fo", "<cmd>FzfLua oldfiles<cr>", { desc = "Recent files" })
-		-- keymap("n", "<leader>fc", "<cmd>FzfLua commands<cr>", { desc = "Commands" })
-		-- keymap("n", "<leader>fk", "<cmd>FzfLua keymaps<cr>", { desc = "Keymaps" })
-		-- keymap("n", "<leader>fs", "<cmd>FzfLua git_status<cr>", { desc = "Git status" })
-		-- keymap("n", "<leader>fgc", "<cmd>FzfLua git_commits<cr>", { desc = "Git commits" })
-		-- keymap("n", "<leader>fgb", "<cmd>FzfLua git_branches<cr>", { desc = "Git branches" })
-		--
-		-- -- Diagnostics
-		-- keymap("n", "<leader>fd", "<cmd>FzfLua diagnostics_document<cr>", { desc = "Document diagnostics" })
-		-- keymap("n", "<leader>fD", "<cmd>FzfLua diagnostics_workspace<cr>", { desc = "Workspace diagnostics" })
-	end,
-}
+-- Files
+map("n", "<leader>ff", "<cmd>FzfLua files<cr>", { desc = "Find Files" })
+map("n", "<leader>fr", "<cmd>FzfLua oldfiles<cr>", { desc = "Recent Files" })
+map("n", "<leader>fb", "<cmd>FzfLua buffers<cr>", { desc = "Buffers" })
+map("n", "<leader>fc", function() fzf.files({ cwd = vim.fn.stdpath("config") }) end, { desc = "Find Config File" })
+map("n", "<leader>fg", "<cmd>FzfLua git_files<cr>", { desc = "Find Git Files" })
+
+-- Grep
+map("n", "<leader>ft", "<cmd>FzfLua live_grep<cr>", { desc = "Live Grep" })
+map("n", "<leader>fw", "<cmd>FzfLua grep_cword<cr>", { desc = "Grep Word Under Cursor" })
+map("v", "<leader>fw", "<cmd>FzfLua grep_visual<cr>", { desc = "Grep Visual Selection" })
+map("n", "<leader>fl", "<cmd>FzfLua blines<cr>", { desc = "Buffer Lines" })
+map("n", "<leader>fL", "<cmd>FzfLua lines<cr>", { desc = "Lines (All Buffers)" })
+
+-- Git
+map("n", "<leader>gs", "<cmd>FzfLua git_status<cr>", { desc = "Git Status" })
+map("n", "<leader>gb", "<cmd>FzfLua git_branches<cr>", { desc = "Git Branches" })
+map("n", "<leader>gl", "<cmd>FzfLua git_commits<cr>", { desc = "Git Log" })
+map("n", "<leader>gf", "<cmd>FzfLua git_bcommits<cr>", { desc = "Git Log File" })
+map("n", "<leader>gS", "<cmd>FzfLua git_stash<cr>", { desc = "Git Stash" })
+
+-- Search
+map("n", "<leader>fh", "<cmd>FzfLua help_tags<cr>", { desc = "Help Pages" })
+map("n", "<leader>fk", "<cmd>FzfLua keymaps<cr>", { desc = "Keymaps" })
+map("n", "<leader>fH", "<cmd>FzfLua highlights<cr>", { desc = "Highlights" })
+map("n", "<leader>fR", "<cmd>FzfLua resume<cr>", { desc = "Resume" })
+map("n", '<leader>f"', "<cmd>FzfLua registers<cr>", { desc = "Registers" })
+map("n", "<leader>fa", "<cmd>FzfLua autocmds<cr>", { desc = "Autocmds" })
+map("n", "<leader>f/", "<cmd>FzfLua search_history<cr>", { desc = "Search History" })
+map("n", "<leader>:", "<cmd>FzfLua command_history<cr>", { desc = "Command History" })
+map("n", "<leader>fM", "<cmd>FzfLua man_pages<cr>", { desc = "Man Pages" })
+map("n", "<leader>fq", "<cmd>FzfLua quickfix<cr>", { desc = "Quickfix List" })
+map("n", "<leader>fj", "<cmd>FzfLua jumps<cr>", { desc = "Jumps" })
+map("n", "<leader>uC", "<cmd>FzfLua colorschemes<cr>", { desc = "Colorschemes" })
+
+-- Diagnostics
+map("n", "<leader>fd", "<cmd>FzfLua diagnostics_document<cr>", { desc = "Buffer Diagnostics" })
+map("n", "<leader>fD", "<cmd>FzfLua diagnostics_workspace<cr>", { desc = "Workspace Diagnostics" })
+
+-- Buffer
+map("n", "<leader>bd", "<cmd>bdelete<cr>", { desc = "Delete Buffer" })

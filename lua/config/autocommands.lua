@@ -45,7 +45,7 @@ autocmd("BufWritePre", {
 		if event.match:match("^%w%w+://") then
 			return
 		end
-		local file = vim.loop.fs_realpath(event.match) or event.match
+		local file = vim.uv.fs_realpath(event.match) or event.match
 		vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
 	end,
 	desc = "Auto-create directories",
@@ -109,11 +109,7 @@ autocmd({ "BufWinEnter" }, {
 	end,
 })
 
-autocmd({ "TextYankPost" }, {
-	callback = function()
-		vim.highlight.on_yank({ higroup = "Visual", timeout = 40 })
-	end,
-})
+-- TextYankPost highlight is now built-in in Neovim 0.12
 
 autocmd({ "FileType" }, {
 	pattern = { "gitcommit", "markdown", "NeogitCommitMessage" },
@@ -135,18 +131,4 @@ autocmd({ "CursorHold" }, {
 			vim.cmd([[silent! lua require("luasnip").unlink_current()]])
 		end
 	end,
-})
-
--- Window navigation in sidekick_terminal buffers
-autocmd({ "FileType" }, {
-	pattern = "sidekick_terminal",
-	callback = function()
-		local opts = { buffer = true, noremap = true, silent = true }
-		vim.keymap.set("t", "<m-h>", "<C-\\><C-n><C-w>h", opts)
-		vim.keymap.set("t", "<m-j>", "<C-\\><C-n><C-w>j", opts)
-		vim.keymap.set("t", "<m-k>", "<C-\\><C-n><C-w>k", opts)
-		vim.keymap.set("t", "<m-l>", "<C-\\><C-n><C-w>l", opts)
-		-- vim.keymap.set("t", "<Esc>", "<Nop>", opts)
-	end,
-	desc = "Window navigation in sidekick terminal",
 })

@@ -113,7 +113,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.diagnostic.jump({ count = 1, float = true })
 		end, opts)
 
-		opts.desc = "Show documentation for what is under cursor"
-		keymap.set("n", "K", vim.lsp.buf.hover, opts)
+		-- K for hover is now a built-in default in Neovim 0.12
+
 	end,
 })
