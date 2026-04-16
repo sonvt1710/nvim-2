@@ -1,30 +1,30 @@
 local fzf = require("fzf-lua")
 
 fzf.setup({
-  winopts = {
-    height = 0.85,
-    width = 0.80,
-    row = 0.35,
-    col = 0.50,
-    border = "rounded",
-    preview = {
-      border = "border",
-      wrap = "nowrap",
-      hidden = "nohidden",
-      vertical = "down:45%",
-      horizontal = "right:50%",
-      layout = "flex",
-      flip_columns = 120,
-      title = true,
-      scrollbar = "float",
-      delay = 100,
-    },
-  },
-  fzf_opts = {
-    ["--layout"] = "reverse",
-    ["--info"] = "inline",
-    ["--bind"] = "ctrl-j:down,ctrl-k:up",
-  },
+	winopts = {
+		height = 0.85,
+		width = 0.80,
+		row = 0.35,
+		col = 0.50,
+		border = "rounded",
+		preview = {
+			border = "border",
+			wrap = "nowrap",
+			hidden = "nohidden",
+			vertical = "down:45%",
+			horizontal = "right:50%",
+			layout = "flex",
+			flip_columns = 120,
+			title = true,
+			scrollbar = "float",
+			delay = 100,
+		},
+	},
+	fzf_opts = {
+		["--layout"] = "reverse",
+		["--info"] = "inline",
+		["--bind"] = "ctrl-j:down,ctrl-k:up",
+	},
 })
 
 local map = vim.keymap.set
@@ -33,7 +33,9 @@ local map = vim.keymap.set
 map("n", "<leader>ff", "<cmd>FzfLua files<cr>", { desc = "Find Files" })
 map("n", "<leader>fr", "<cmd>FzfLua oldfiles<cr>", { desc = "Recent Files" })
 map("n", "<leader>fb", "<cmd>FzfLua buffers<cr>", { desc = "Buffers" })
-map("n", "<leader>fc", function() fzf.files({ cwd = vim.fn.stdpath("config") }) end, { desc = "Find Config File" })
+map("n", "<leader>fc", function()
+	fzf.files({ cwd = vim.fn.stdpath("config") })
+end, { desc = "Find Config File" })
 map("n", "<leader>fg", "<cmd>FzfLua git_files<cr>", { desc = "Find Git Files" })
 
 -- Grep

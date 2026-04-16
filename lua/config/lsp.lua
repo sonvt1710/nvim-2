@@ -93,6 +93,5 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end, opts)
 
 		-- K for hover is now a built-in default in Neovim 0.12
-
 	end,
 })

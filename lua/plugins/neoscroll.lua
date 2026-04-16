@@ -7,15 +7,15 @@ vim.cmd([[
 ]])
 
 require("neoscroll").setup({
-  mappings = { "<C-u>", "<C-d>", "<C-b>", "<C-f>", "<C-y>", "<C-e>", "zt", "zz", "zb", "C-k", "C-j" },
-  hide_cursor = true,
-  stop_eof = true,
-  respect_scrolloff = false,
-  cursor_scrolls_alone = true,
-  easing_function = nil,
-  pre_hook = nil,
-  post_hook = nil,
-  performance_mode = false,
+	mappings = { "<C-u>", "<C-d>", "<C-b>", "<C-f>", "<C-y>", "<C-e>", "zt", "zz", "zb", "C-k", "C-j" },
+	hide_cursor = true,
+	stop_eof = true,
+	respect_scrolloff = false,
+	cursor_scrolls_alone = true,
+	easing_function = nil,
+	pre_hook = nil,
+	post_hook = nil,
+	performance_mode = false,
 })
 
 local t = {}
