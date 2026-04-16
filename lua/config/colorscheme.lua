@@ -317,6 +317,7 @@ hl(0, "SelectMode", { fg = "#db6d28", bg = "NONE" })
 
 hl(0, "SnacksPickerListCursorLine", { bg = colors.visual })
 hl(0, "SnacksPickerDir", { fg = colors.light_grey_4, bg = "NONE" })
+hl(0, "SnacksDashboardHeader", { fg = colors.blue, bg = "NONE" })
 
 -- vim.api.nvim_set_hl(0, "SnacksPickerListCursorLine", { link = "Visual" })
 

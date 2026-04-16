@@ -9,8 +9,15 @@ require("snacks").setup({
 	scope = { enabled = true },
 	statuscolumn = { enabled = true },
 	words = { enabled = true, debounce = 50 },
+	dashboard = {
+		enabled = true,
+		sections = {
+			{ section = "header" },
+			{ title = "Projects", section = "projects", indent = 2, padding = 1 },
+			{ title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
+		},
+	},
 	-- disabled (have alternatives or unused)
-	dashboard = { enabled = false },
 	explorer = { enabled = false },
 	scroll = { enabled = false },
 })
