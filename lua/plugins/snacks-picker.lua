@@ -38,6 +38,3 @@ map("n", "<leader>uC", function() Snacks.picker.colorschemes() end, { desc = "Co
 -- Diagnostics
 map("n", "<leader>fd", function() Snacks.picker.diagnostics_buffer() end, { desc = "Buffer Diagnostics" })
 map("n", "<leader>fD", function() Snacks.picker.diagnostics() end, { desc = "Workspace Diagnostics" })
-
--- Buffer
-map("n", "<leader>bd", "<cmd>bdelete<cr>", { desc = "Delete Buffer" })
