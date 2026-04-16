@@ -1,6 +1,10 @@
 local lint = require("lint")
 
 lint.linters_by_ft = {
+  javascript = { "oxlint" },
+  typescript = { "oxlint" },
+  javascriptreact = { "oxlint" },
+  typescriptreact = { "oxlint" },
   sh = { "shellcheck" },
   bash = { "shellcheck" },
   zsh = { "shellcheck" },

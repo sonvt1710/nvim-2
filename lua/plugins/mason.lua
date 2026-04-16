@@ -9,7 +9,6 @@ require("mason-tool-installer").setup({
     "ts_ls",
     "lua_ls",
     "tailwindcss",
-    "eslint",
     "rust_analyzer",
     "gopls",
     "html",
@@ -26,7 +25,7 @@ require("mason-tool-installer").setup({
     "taplo",
     "yamlls",
 
-    "prettier",
+    "oxlint",
     "stylua",
     "black",
     "isort",

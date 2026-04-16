@@ -3,7 +3,6 @@ vim.lsp.enable({
 	"ts_ls",
 	"lua_ls",
 	"tailwindcss",
-	"eslint",
 	"rust_analyzer",
 	"gopls",
 	"html",
