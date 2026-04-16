@@ -109,7 +109,11 @@ autocmd({ "BufWinEnter" }, {
 	end,
 })
 
--- TextYankPost highlight is now built-in in Neovim 0.12
+autocmd({ "TextYankPost" }, {
+	callback = function()
+		vim.highlight.on_yank({ higroup = "Visual", timeout = 40 })
+	end,
+})
 
 autocmd({ "FileType" }, {
 	pattern = { "gitcommit", "markdown", "NeogitCommitMessage" },
