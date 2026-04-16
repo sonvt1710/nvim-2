@@ -8,11 +8,11 @@ require("snacks").setup({
 	input = { enabled = true },
 	scope = { enabled = true },
 	statuscolumn = { enabled = true },
+	words = { enabled = true, debounce = 50 },
 	-- disabled (have alternatives or unused)
 	dashboard = { enabled = false },
 	explorer = { enabled = false },
 	scroll = { enabled = false },
-	words = { enabled = false },
 })
 
 local map = vim.keymap.set
@@ -41,3 +41,7 @@ map("n", "<leader>bd", function() Snacks.bufdelete() end, { desc = "Delete Buffe
 -- Notifier
 map("n", "<leader>un", function() Snacks.notifier.hide() end, { desc = "Dismiss Notifications" })
 map("n", "<leader>fn", function() Snacks.picker.notifications() end, { desc = "Notification History" })
+
+-- LSP reference navigation (requires words module)
+map({ "n", "t" }, "]]", function() Snacks.words.jump(vim.v.count1) end, { desc = "Next LSP Reference" })
+map({ "n", "t" }, "[[", function() Snacks.words.jump(-vim.v.count1) end, { desc = "Prev LSP Reference" })

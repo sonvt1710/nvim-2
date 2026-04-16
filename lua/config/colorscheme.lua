@@ -56,6 +56,7 @@ local colors = {
 -- Editor
 hl(0, "Visual", { fg = "NONE", bg = colors.visual })
 hl(0, "VisualNOS", { fg = "NONE", bg = colors.alt_bg })
+hl(0, "CursorLine", { fg = "NONE", bg = colors.cursorline })
 
 hl(0, "Comment", { fg = colors.light_grey_4, bg = "NONE", italic = true })
 hl(0, "Variable", { fg = colors.fg, bg = "NONE" })
@@ -190,6 +191,9 @@ hl(0, "LspCodeLensSeparator", { fg = colors.light_grey_4, bg = "NONE", italic = 
 
 -- LSP
 hl(0, "LspInlayHint", { fg = colors.dark_grey_4, bg = "NONE" })
+hl(0, "LspReferenceText", { bg = colors.reference })
+hl(0, "LspReferenceRead", { bg = colors.reference })
+hl(0, "LspReferenceWrite", { bg = colors.reference })
 hl(0, "DiagnosticUnnecessary", { fg = "#6f7278", bg = "NONE", underdashed = true })
 hl(0, "DiagnosticHint", { fg = colors.hint, bg = "NONE" })
 hl(0, "DiagnosticInfo", { fg = colors.info, bg = "NONE" })
