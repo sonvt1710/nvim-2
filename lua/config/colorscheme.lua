@@ -54,6 +54,9 @@ local colors = {
 }
 
 -- Editor
+hl(0, "Visual", { fg = "NONE", bg = colors.visual })
+hl(0, "VisualNOS", { fg = "NONE", bg = colors.alt_bg })
+
 hl(0, "Comment", { fg = colors.light_grey_4, bg = "NONE", italic = true })
 hl(0, "Variable", { fg = colors.fg, bg = "NONE" })
 hl(0, "String", { fg = colors.green, bg = "NONE" })
@@ -307,6 +310,11 @@ hl(0, "VisualMode", { fg = "#a371f7", bg = "NONE" })
 hl(0, "CommandMode", { fg = "#f2cc60", bg = "NONE" })
 hl(0, "ReplaceMode", { fg = "#f85149", bg = "NONE" })
 hl(0, "SelectMode", { fg = "#db6d28", bg = "NONE" })
+
+hl(0, "SnacksPickerListCursorLine", { bg = colors.visual })
+hl(0, "SnacksPickerDir", { fg = colors.light_grey_4, bg = "NONE" })
+
+-- vim.api.nvim_set_hl(0, "SnacksPickerListCursorLine", { link = "Visual" })
 
 -- Lua
 hl(0, "@lsp.type.property.lua", { fg = colors.fg, bg = "NONE" })

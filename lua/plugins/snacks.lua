@@ -6,7 +6,7 @@ require("snacks").setup({
 	explorer = { enabled = false },
 	input = { enabled = false },
 	notifier = { enabled = false },
-	picker = { enabled = false },
+	picker = { enabled = true },
 	quickfile = { enabled = false },
 	scope = { enabled = false },
 	scroll = { enabled = false },

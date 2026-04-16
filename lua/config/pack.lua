@@ -38,7 +38,6 @@ vim.pack.add({
 	"https://github.com/jinh0/eyeliner.nvim",
 
 	-- Navigation & files
-	"https://github.com/ibhagwan/fzf-lua",
 	"https://github.com/nvim-neo-tree/neo-tree.nvim",
 	"https://github.com/nvim-lua/plenary.nvim",
 	"https://github.com/MunifTanjim/nui.nvim",

@@ -1,5 +1,5 @@
 -- Define your icons here. These are used by blink.cmp and breadcrumbs/navic.
--- To find icons, run :FzfLua icons or use https://www.nerdfonts.com/cheat-sheet
+-- To find icons, use https://www.nerdfonts.com/cheat-sheet or :Snacks.picker.icons()
 local M = {
 	Array = "",
 	Boolean = "",
