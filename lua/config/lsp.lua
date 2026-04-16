@@ -1,24 +1,4 @@
--- Enable LSP servers
-vim.lsp.enable({
-	"ts_ls",
-	"lua_ls",
-	"tailwindcss",
-	"rust_analyzer",
-	"gopls",
-	"html",
-	"cssls",
-	"basedpyright",
-	"bashls",
-	"css_variables",
-	"cssmodules_ls",
-	"dockerls",
-	"jsonls",
-	"lemminx",
-	"marksman",
-	"nginx_language_server",
-	"taplo",
-	"yamlls",
-})
+-- LSP servers are auto-enabled by mason-lspconfig's automatic_enable (see lua/plugins/mason.lua)
 
 -- Configure diagnostic display with custom signs
 vim.diagnostic.config({
