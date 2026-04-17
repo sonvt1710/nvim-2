@@ -62,6 +62,38 @@ vim.pack.add({
 	"https://github.com/catgoose/nvim-colorizer.lua",
 })
 
+-- :PackUpdate — update all plugins without confirmation
+vim.api.nvim_create_user_command("PackUpdate", function()
+	vim.pack.update(nil, { force = true })
+end, { desc = "Update all vim.pack plugins (no confirmation)" })
+
+-- :PackClean — remove plugins that are installed but no longer in vim.pack.add()
+vim.api.nvim_create_user_command("PackClean", function()
+	local installed = vim.pack.get()
+	local orphans = {}
+	for _, plugin in ipairs(installed) do
+		if not plugin.active then
+			table.insert(orphans, plugin.spec.name)
+		end
+	end
+
+	if #orphans == 0 then
+		vim.notify("No unused plugins found", vim.log.levels.INFO)
+		return
+	end
+
+	vim.ui.select(
+		{ "Yes", "No" },
+		{ prompt = "Remove " .. #orphans .. " unused plugin(s): " .. table.concat(orphans, ", ") .. "?" },
+		function(choice)
+			if choice == "Yes" then
+				vim.pack.del(orphans)
+				vim.notify("Removed " .. #orphans .. " plugin(s)", vim.log.levels.INFO)
+			end
+		end
+	)
+end, { desc = "Remove unused vim.pack plugins" })
+
 -- Auto-load all plugin configurations from lua/plugins/
 local config_path = vim.fn.stdpath("config") .. "/lua/plugins"
 for _, file in ipairs(vim.fn.glob(config_path .. "/*.lua", false, true)) do
