@@ -23,3 +23,13 @@ require("nvim-navic").setup({
 })
 
 require("breadcrumbs").setup()
+
+-- Update winbar immediately on buffer enter and LSP attach
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter", "LspAttach" }, {
+  callback = function()
+    local ok = pcall(require("breadcrumbs").get_winbar)
+    if not ok then
+      return
+    end
+  end,
+})
